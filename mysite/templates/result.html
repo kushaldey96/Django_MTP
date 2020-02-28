@@ -1,0 +1,110 @@
+
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+
+function myFunction2() {
+      alert( "Load was performed2.");
+      var div = document.getElementById('right_panel');
+
+            while(div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+      document.getElementById('right_panel').append(
+        {{num}}
+          )
+    }
+
+</script>
+<div class="container">
+<div class="row">
+    <div id='left_panel'  class="col-sm-6" style="background-color:yellow;">
+    Result : {{result}}
+
+    <form action=""Docx1">
+        <input type="submit" value="Image_extraction.csv">
+
+    </form>
+    <br>
+ <button onclick="myFunction2()">Copy Text1</button>
+ <br>
+ <br>
+    <form action="show2">
+      <!--  <input type="submit" value="Section.csv"> -->
+        <button onclick="myFunction2()">Section.csv</button>
+    </form>
+    <br>
+
+    <form action="show3">
+        <input type="submit" value="Table_Extraction.csv">
+    </form>
+    <br>
+
+    <form action="show4">
+        <input type="submit" value="Section_Table.csv">
+    </form>
+    <br>
+
+    <form action="show5">
+        <input type="submit" value="Section_Image.csv">
+    </form>
+    <br>
+
+    <form action="show6">
+        <input type="submit" value="Section_Section.csv">
+    </form>
+    <br>
+
+    <form action="show7">
+        <input type="submit" value="Section_Image_Count.graph">
+    </form>
+    <br>
+
+    <form action="Docx1">
+
+        Section Id : <input type="text" name="num1"><br>
+        Image Name : <input type="text" name="num1"><br>
+        <input type="submit">
+
+    </form>
+
+
+
+    </div>
+
+    <div id='right_panel' class="col-sm-6" style="background-color:pink;">
+
+      <b> Right panel </b>
+        {{name}}
+       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                              {% for col in columns %}
+                              <th>{{ col }}</th>
+                              {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for  row in rows %}
+                        <tr>
+                            {%for col in row %}
+                              <td> {{ col }} </td>
+                            {% endfor %}
+                        </tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</div>
+</div>
+{% endblock%}

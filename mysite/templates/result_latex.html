@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+Result : {{result}}
+
+<form action="show1_latex">
+    <input type="submit" value="Image_extraction.csv">
+</form>
+<br>
+<form action="show2_latex">
+    <input type="submit" value="Section.csv">
+</form>
+<br>
+<form action="show3_latex">
+    <input type="submit" value="References.csv">
+</form>
+<br>
+<form action="show4_latex">
+    <input type="submit" value="Section_Table.csv">
+</form>
+<br>
+<form action="show5_latex">
+    <input type="submit" value="Section_Image.csv">
+</form>
+<br>
+<form action="show6_latex">
+    <input type="submit" value="Section_Section.csv">
+</form>
+<br>
+<form action="show7_latex">
+    <input type="submit" value="Section_Image_Count.csv">
+</form>
+
+
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                {% for col in columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for  row in rows %}
+                <tr>
+                    {%for col in row %}
+                      <td> {{ col }} </td>
+                    {% endfor %}
+                </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+{% endblock%}

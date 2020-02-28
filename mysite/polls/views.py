@@ -69,13 +69,6 @@ def docx1(request):
     exec(open(prog_file).read())
     prog_file = os.path.join(program_dir, 'imageExtraction.py')
     exec(open(prog_file).read())
-
-    '''
-    exec(open("sectionExtraction.py").read())
-    fs = FileSystemStorage()
-    name = fs.save(uploaded_file.name, uploaded_file)
-    exec(open(docx1_test_prog).read())
-    exec(open(prog_file).read())
     prog_file = os.path.join(program_dir, 'imageExtraction.py')
     exec(open(prog_file).read())
     prog_file = os.path.join(program_dir, 'sectionSection.py')
@@ -89,7 +82,6 @@ def docx1(request):
     prog_file = os.path.join(program_dir, 'sectionExtraction.py')
     exec(open(prog_file).read())
     # d = '/home/kushal/Desktop/MTP_project/Django_code/mysite/media'
-    '''
 
     for f in filesToRemove_upload:
         print(f)
@@ -102,31 +94,42 @@ def docx1(request):
 
 
 def show1(request):
-    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Image_extraction.csv',error_bad_lines=False)
+    csv_file_name  = os.path.join(csv_dir, "Image_extraction.csv")
+    df=pd.read_csv(csv_file_name, error_bad_lines=False)
     records =  df.values.tolist()
     return render(request, 'result2.html', {'columns': df.columns, 'rows': records, 'df':df})
 
 def show2(request):
-    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section.csv',error_bad_lines=False)
+    csv_file_name  = os.path.join(csv_dir, "Section.csv")
+    df=pd.read_csv(csv_file_name, error_bad_lines=False)
+    #df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section.csv',error_bad_lines=False)
     records =  df.values.tolist()
     return render(request, 'result2.html', {'columns': df.columns, 'rows': records, 'df':df})
 
 def show3(request):
-    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Table_Extraction.csv',error_bad_lines=False)
+    csv_file_name  = os.path.join(csv_dir, "Table_Extraction.csv")
+    df=pd.read_csv(csv_file_name, error_bad_lines=False)
+    #df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Table_Extraction.csv',error_bad_lines=False)
     records =  df.values.tolist()
     return render(request, 'result2.html', {'columns': df.columns, 'rows': records, 'df':df})
 
 def show4(request):
-    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section_Table.csv',error_bad_lines=False)
+    csv_file_name  = os.path.join(csv_dir, "Section_Table.csv")
+    df=pd.read_csv(csv_file_name, error_bad_lines=False)
+#    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section_Table.csv',error_bad_lines=False)
     records =  df.values.tolist()
     return render(request, 'result2.html', {'columns': df.columns, 'rows': records, 'df':df})
 
 def show5(request):
-    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section_Image.csv',error_bad_lines=False)
+    csv_file_name  = os.path.join(csv_dir, "Section_Image.csv")
+    df=pd.read_csv(csv_file_name, error_bad_lines=False)
+#    df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section_Image.csv',error_bad_lines=False)
     records =  df.values.tolist()
     return render(request, 'result2.html', {'columns': df.columns, 'rows': records, 'df':df})
 
 def show6(request):
+    csv_file_name  = os.path.join(csv_dir, "Section_Section.csv")
+    df=pd.read_csv(csv_file_name, error_bad_lines=False)
     df=pd.read_csv('/home/kushal/Desktop/MTP_project/Django_code/mysite/media2/Section_Section.csv',error_bad_lines=False)
     records =  df.values.tolist()
     return render(request, 'result2.html', {'columns': df.columns, 'rows': records, 'df':df})
